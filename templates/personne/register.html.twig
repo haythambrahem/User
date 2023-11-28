@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modernize Free</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/admin/src/assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="../assets/admin/src/assets/css/styles.min.css" />
+</head>
+
+<body>
+    {% block body %}
+        <!-- Body Wrapper -->
+        <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+            data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+            <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+                <div class="d-flex align-items-center justify-content-center w-100">
+                    <div class="row justify-content-center w-100">
+                        <div class="col-md-8 col-lg-6 col-xxl-3">
+                            <div class="card mb-0">
+                                <div class="card-body">
+                                    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                                    <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                        <img src="../assets/admin/src/assets/images/logos/dark-logo.svg" width="180" alt="">
+                                    </a>
+                                    <p class="text-center">Eventini</p>
+
+                                    <div class="mb-3">
+                                        <label for="exampleInputtext1" class="form-label">Name</label><br>
+                                        {{ form_widget(form.nom) }}
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleInputtext1" class="form-label">Prenom</label><br>
+                                        {{ form_widget(form.prenom) }}
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email Address</label><br>
+                                        {{ form_widget(form.email) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Password</label><br>
+                                        {{ form_widget(form.plainPassword) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Numero telephone</label><br>
+                                        {{ form_widget(form.tele) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">CIN</label><br>
+                                        {{ form_widget(form.cin) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Adresse</label><br>
+                                        {{ form_widget(form.adresse) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Username</label><br>
+                                        {{ form_widget(form.ign) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Photo de profile</label><br>
+                                        {{ form_widget(form.pprofile) }}
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label for="exampleInputPassword1" class="form-label">Date naissance</label><br>
+                                        {{ form_widget(form.datenaise) }}
+                                    </div>
+
+                                    <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{{ button_label|default('Enregistrer votre compte') }}</button>
+
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                                        <a class="text-primary fw-bold ms-2" href="{{ path('app_login') }}">Sign In</a>
+                                    </div>
+                                    
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    <script src="{{ asset('../assets/admin/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('../assets/admin/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+
+</html>

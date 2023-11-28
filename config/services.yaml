@@ -6,6 +6,17 @@
 parameters:
 
 services:
+    gregwar_captcha:
+        class: Gregwar\CaptchaBundle\Captcha\Captcha
+        arguments:
+            - "%public_key%"
+            - "%private_key%"
+            - "%site_key%"  
+    App\Entity\Personne:
+        autowire: true
+    App\EventListener\LoginListener:
+        tags:
+            - { name: kernel.event_subscriber }
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

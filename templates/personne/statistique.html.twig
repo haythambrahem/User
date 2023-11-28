@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Statistiques des Clients selon Ages{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">Statistiques des Clients selon Ages</h1>
+    <br><br><br>
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Statistiques des Clients selon Ages</h4>
+                <canvas id="myChart" style="width:100%;max-width:900px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script>
+    let PersonneAge = [];
+
+    {% for transport in transports %}
+        PersonneAge.push("{{ personne.Age }}");
+    {% endfor %}
+
+    // Fonction pour générer des couleurs aléatoires
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 15)];
+        }
+        return color;
+    }
+
+
+    // Création des données pour le graphique
+    let chartData = {
+        labels: transportTypes,
+        datasets: [{
+            data: transportCapacite,
+            backgroundColor: transportTypes.map(name => getRandomColor())
+        }]
+    };
+
+    // Configuration des options du graphique
+    let chartOptions = {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: "Statistiques des types selon les capacites"
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+        
+    };
+
+    // Création du graphique
+    let ctx = document.getElementById('myChart').getContext('2d');
+    let myChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: chartOptions
+    });
+    </script>
+{% endblock %}
